@@ -1,24 +1,10 @@
 
-<md-grid-list [cols]="2" rowHeight="300px" gutterSize="50px">
-<md-grid-tile>
-<md-card>
-Conversion
-</md-card>
-</md-grid-tile>
-<md-grid-tile>
-<md-card>
-Bounce Rate
-</md-card>
-</md-grid-tile>
-<md-grid-tile>
-<md-card>
-Other one
-</md-card>
-</md-grid-tile>
-<md-grid-tile>
-<md-card>
-Another one
-</md-card>
-</md-grid-tile>
+<md-grid-list [cols]="2" rowHeight="300px" gutterSize="20px">
+    <md-grid-tile *ngFor= "let metric of data">
+        <md-card>
+            <div class="title"> {{ metric.title }} </div>
+        </md-card>
+    </md-grid-tile>
 </md-grid-list>
+
 <router-outlet></router-outlet>

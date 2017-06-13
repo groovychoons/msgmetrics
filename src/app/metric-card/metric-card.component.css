@@ -5,8 +5,15 @@ md-card {
     background-color: #2c3a47;
     text-align: center;
     color: white;
+    padding: 0px;
 }
 
 md-grid-list {
-    margin: 30px 50px;
+    margin: 30px;
+}
+
+.title {
+    background-color: #314150;
+    padding: 13px;
+    margin: 0px;
 }

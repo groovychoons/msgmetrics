@@ -7,7 +7,7 @@ md-sidenav-container {
 .logobox {
   background-color: #2fb5b6;
   height: 63px;
-  border-bottom: 1px solid #2fb5b8;
+  border-bottom: 1px solid #2fa5a6;
 }
 
 md-sidenav {
@@ -19,7 +19,7 @@ md-toolbar {
   background-color: white;
   color: black;
   border-bottom: 1px solid lightgray;
-  height: 60px;
+  height: 64px;
 }
 
 .home {
@@ -28,5 +28,5 @@ md-toolbar {
   padding-left: 20px;
   margin: 0px;
   font-weight: 300;
-  padding-top: 3px;
+  padding-top: 1px;
 }
