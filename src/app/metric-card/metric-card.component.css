@@ -1,0 +1,12 @@
+
+md-card {
+    height: 90%;
+    width: 90%;
+    background-color: #2c3a47;
+    text-align: center;
+    color: white;
+}
+
+md-grid-list {
+    margin: 30px 50px;
+}
