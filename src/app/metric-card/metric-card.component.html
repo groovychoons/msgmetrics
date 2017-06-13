@@ -1,8 +1,13 @@
 
-<md-grid-list [cols]="2" rowHeight="300px" gutterSize="20px">
+<md-grid-list [cols]="2" rowHeight="300px" gutterSize="15px">
     <md-grid-tile *ngFor= "let metric of data">
         <md-card>
             <div class="title"> {{ metric.title }} </div>
+            <div class="numbers">
+                <div class="previous"> {{ metric.previous }} </div>
+                <div class="current"> {{ metric.current }} </div>
+                <div class="change"> {{ metric.current / metric.previous - 1 | percent:'1.1-1' }} </div>
+            </div>
         </md-card>
     </md-grid-tile>
 </md-grid-list>
