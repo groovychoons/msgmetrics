@@ -9,7 +9,7 @@ import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
 export class AppComponent {
   title = 'Made Simple Conversion Metrics';
   
-  private myDateRangePickerOptions: IMyDrpOptions = {
+  myDateRangePickerOptions: IMyDrpOptions = {
         // other options...
         dateFormat: 'dd mmm yyyy',
         showClearBtn: false,
