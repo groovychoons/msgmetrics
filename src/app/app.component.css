@@ -20,6 +20,7 @@ md-toolbar {
   color: black;
   border-bottom: 1px solid lightgray;
   height: 64px;
+  width: 100%;
 }
 
 .home {
@@ -29,4 +30,9 @@ md-toolbar {
   margin: 0px;
   font-weight: 300;
   padding-top: 1px;
+}
+
+.nav-right {
+  padding: 7px 25px 0px 0px;
+  margin: 0px 0px 0px auto;
 }
