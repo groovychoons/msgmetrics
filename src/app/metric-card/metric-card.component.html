@@ -3,6 +3,7 @@
     <md-grid-tile *ngFor= "let metric of data">
         <md-card>
             <div class="title"> {{ metric.title }} </div>
+            <div class="graph" id={{metric.title}}></div>
             <div class="numbers">
                 <div class="previous"> {{ metric.previous }} </div>
                 <div class="current"> {{ metric.current }} </div>

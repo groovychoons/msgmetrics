@@ -15,7 +15,7 @@ export const MOCK_DATA: Metric[] = [
 },
 {
 	id: 3,
-	title: 'Users',
+	title: 'Visitors',
 	previous: 4000,
 	current: 3986,
 },

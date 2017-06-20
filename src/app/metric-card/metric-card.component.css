@@ -22,3 +22,7 @@ md-grid-list {
 .numbers {
     margin-top: 130px;
 }
+
+#timeline {
+    background-color: red;
+}

@@ -38,7 +38,8 @@ md-toolbar {
 }
 
 .dates {
-  color: white;
-  padding: 50px;
-  background-color: purple;
+  color: black;
+  font-family: helvetica;
+  padding: 10px 50px;
+  background-color: lightslategray;
 }

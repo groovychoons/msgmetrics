@@ -17,13 +17,16 @@
 </md-toolbar>
 
 <div class="dates">
-{{ startString }}
-<br>
-{{ endString }} 
+  <div id="embed-api-auth-container"></div>
+  <div id="view-selector"></div>
 </div>
 
 <app-metric-card></app-metric-card>
 
 </md-sidenav-container>
+
+{{ startString }}
+<br>
+{{ endString }} 
 
 <router-outlet></router-outlet>
