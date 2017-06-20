@@ -2,55 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Msgmetrics</title>
+  <title>MSGeezus</title>
   <base href="/">
 
-  <meta name="google-signin-client_id" content="900475442837-f6q472so93tbh7avr1khq7aervmmf2cg.apps.googleusercontent.com">
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <script src="https://apis.google.com/js/client:platform.js"></script>
-  <script>
-  // Replace with your view ID.
-  var VIEW_ID = "ga:2676250";
-
-  // Query the API and print the results to the page.
-  function queryReports() {
-    gapi.client.request({
-      path: '/v4/reports:batchGet',
-      root: 'https://analyticsreporting.googleapis.com/',
-      method: 'POST',
-      body: {
-        reportRequests: [
-          {
-            viewId: VIEW_ID,
-            dateRanges: [
-              {
-                startDate: "2017-01-01",
-                endDate: "2017-02-01"
-              }
-            ],
-            metrics: [
-              {"expression": "ga:pageviews"},
-              {"expression": "ga:transactionsPerSession"}
-            ]
-          }
-        ]
-      }
-    }).then(displayResults, console.error.bind(console));
-  }
-
-  function displayResults(response) {
-    var formattedJson = JSON.stringify(response.result, null, 2);
-    var data = formattedJson.match(/^\d|\d+\.+\d+|\d+\b|\d+(?=\w)/g)
-  .map(function (v) {return +v;});
-    document.getElementById('query-output').innerHTML = data[1];
-  }
-
-  </script>
   <app-root>Loading...</app-root>
 </body>
 </html>

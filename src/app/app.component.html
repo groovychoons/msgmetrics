@@ -2,13 +2,12 @@
   <md-sidenav mode="side" opened="true" #sidenav >
     <div class="logobox">
     </div>
-      <p class="g-signin2" data-onsuccess="queryReports"></p>
   </md-sidenav>
 
-<md-toolbar>
-  <div class="nav-left">
-    <div class="home" routerLink="/">{{title}}</div>
-  </div>
+  <md-toolbar>
+    <div class="nav-left">
+      <div class="home" routerLink="/">{{title}}</div>
+    </div>
 
   <div class="nav-right">
   <my-date-range-picker [options]="myDateRangePickerOptions"
@@ -17,7 +16,14 @@
 
 </md-toolbar>
 
+<div class="dates">
+{{ startString }}
+<br>
+{{ endString }} 
+</div>
+
 <app-metric-card></app-metric-card>
 
 </md-sidenav-container>
+
 <router-outlet></router-outlet>

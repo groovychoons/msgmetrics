@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
+import { Component, OnInit } from '@angular/core';
+import { IMyDrpOptions, IMyDateRangeModel, IMyDate } from 'mydaterangepicker';
+import { Inject, Injectable, Optional } from '@angular/core';
+declare var gapi: any;
 
 @Component({
   selector: 'app-root',
@@ -8,24 +10,36 @@ import {IMyDrpOptions, IMyDateRangeModel} from 'mydaterangepicker';
 })
 export class AppComponent {
   title = 'Made Simple Conversion Metrics';
-  
+
   myDateRangePickerOptions: IMyDrpOptions = {
-        // other options...
         dateFormat: 'dd mmm yyyy',
         showClearBtn: false,
         showApplyBtn: false,
         sunHighlight: false,
         selectorWidth: '240',
+  };
 
-    };
+  public start: IMyDate =  { day: 11, month: 11, year: 2016 };
+  public end: IMyDate =  { day: 11, month: 10, year: 2016 };
 
-    constructor() { }
+  public startString: string = this.start.year + "-" + this.start.month + "-" + this.start.day;
+  public endString: string = this.end.year + "-" + this.end.month + "-" + this.end.day;
 
-    // dateRangeChanged callback function called when the user apply the date range. This is
-    // mandatory callback in this option. There are also optional inputFieldChanged and
-    // calendarViewChanged callbacks.
-    onDateRangeChanged(event: IMyDateRangeModel) {
-        // event properties are: event.beginDate, event.endDate, event.formatted,
-        // event.beginEpoc and event.endEpoc
-    }
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  onDateRangeChanged(event: IMyDateRangeModel) {
+    // event properties are: event.beginDate, event.endDate, event.formatted,
+    // event.beginEpoc and event.endEpoc
+    this.start = event.beginDate;
+    this.end = event.endDate;
+    
+    this.startString = this.start.year + "-" + this.start.month + "-" + this.start.day;
+    this.endString = this.end.year + "-" + this.end.month + "-" + this.end.day;
+
+  }
+  
 }
+
