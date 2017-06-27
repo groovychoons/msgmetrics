@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { MetricCardComponent } from './metric-card/metric-card.component';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    MyDateRangePickerModule
+    MyDateRangePickerModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

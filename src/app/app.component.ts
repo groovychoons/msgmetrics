@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IMyDrpOptions, IMyDateRangeModel, IMyDate } from 'mydaterangepicker';
 import { Inject, Injectable, Optional } from '@angular/core';
-declare var gapi: any;
 
 @Component({
   selector: 'app-root',
@@ -41,5 +40,12 @@ export class AppComponent {
 
   }
   
+
+  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+ 
+  public barChartData:any[] = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+  ];
+
 }
 

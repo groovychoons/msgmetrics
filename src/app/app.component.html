@@ -25,8 +25,20 @@
 
 </md-sidenav-container>
 
+<div class="dates">
 {{ startString }}
 <br>
 {{ endString }} 
+</div>
+
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]='barChartLabels'
+            chartType='line'></canvas>
+  </div>
+</div>
+
 
 <router-outlet></router-outlet>

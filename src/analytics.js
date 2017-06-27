@@ -24,6 +24,19 @@ gapi.analytics.ready(function() {
     container: 'view-selector',
   })
 
+    viewSelector.on('change', function(ids) {
+    var newIds = {
+      query: {
+        ids: ids
+      }
+    }
+    conversion.set(newIds).execute();
+    visitors.set(newIds).execute();
+    renderBounceRateChart(ids);
+    revenue.set(newIds).execute();
+
+  });
+
   // Step 5: Create the timeline chart.
 
   var conversion = new gapi.analytics.googleCharts.DataChart({
@@ -40,19 +53,26 @@ gapi.analytics.ready(function() {
     }
   });
 
-  var bounce = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
+  function renderBounceRateChart(ids) {
+    query({
+      'ids': ids,
       'dimensions': 'ga:date',
       'metrics': 'ga:bounceRate',
-      'start-date': '30daysAgo',
-      'end-date': 'today',
-    },
-    chart: {
-      type: 'LINE',
-      container: 'Bounce Rate'
-    }
-  });
+      'start-date': '7daysAgo',
+      'end-date': 'today'
+    })
+    .then(function(response) {
+
+      var data = [];
+
+      response.rows.forEach(function(row) {
+        data.push(row[1]);
+      });
+
+      var thechart = document.getElementById('BounceTest');
+
+    });
+  }
 
   var visitors = new gapi.analytics.googleCharts.DataChart({
     reportType: 'ga',
@@ -82,22 +102,20 @@ gapi.analytics.ready(function() {
     }
   });
 
+  function query(params) {
+    return new Promise(function(resolve, reject) {
+      var data = new gapi.analytics.report.Data({query: params});
+      data.once('success', function(response) { resolve(response); })
+          .once('error', function(response) { reject(response); })
+          .execute();
+    });
+  }
+
   // Step 6: Hook up the components to work together.
 
   gapi.analytics.auth.on('success', function(response) {
     viewSelector.execute();
   });
 
-  viewSelector.on('change', function(ids) {
-    var newIds = {
-      query: {
-        ids: ids
-      }
-    }
-    conversion.set(newIds).execute();
-    bounce.set(newIds).execute();
-    visitors.set(newIds).execute();
-    revenue.set(newIds).execute();
 
-  });
 });
