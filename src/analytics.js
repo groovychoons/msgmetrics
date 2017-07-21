@@ -24,12 +24,13 @@ gapi.analytics.ready(function() {
     container: 'view-selector',
   })
 
-    viewSelector.on('change', function(ids) {
+  viewSelector.on('change', function(ids) {
     var newIds = {
       query: {
         ids: ids
       }
     }
+
     renderConversionRate(ids);
     renderVisitors(ids);
     renderBounceRate(ids);

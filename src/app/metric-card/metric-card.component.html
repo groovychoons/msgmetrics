@@ -1,5 +1,5 @@
 
-<md-grid-list [cols]="2" rowHeight="400px" gutterSize="15px">
+<md-grid-list [cols]="2" rowHeight="364px" gutterSize="15px">
     <md-grid-tile>
         <md-card>
             <div class="title">Conversion Rate</div>
@@ -12,9 +12,9 @@
                 </div>
             </div>
             <div class="numbers">
-                <div class="previous"> 10</div>
-                <div class="current"> 12</div>
-                <div class="change"> 1.2%</div>
+                <div class="average">Average:<br>6.42%</div>
+                <div class="current">Current:<br>6.10%</div>
+                <div class="change">Change:<br>-5.45%</div>
             </div>
         </md-card>
     </md-grid-tile>
@@ -30,9 +30,9 @@
                 </div>
             </div>
             <div class="numbers">
-                <div class="previous"> 10</div>
-                <div class="current"> 12</div>
-                <div class="change"> 1.2%</div>
+                <div class="average">Average:<br>41.37%</div>
+                <div class="current">Current:<br>40.80%</div>
+                <div class="change">Change:<br>-1.39%</div>
             </div>
         </md-card>
     </md-grid-tile>
@@ -48,9 +48,9 @@
                 </div>
             </div>
             <div class="numbers">
-                <div class="previous"> 10</div>
-                <div class="current"> 12</div>
-                <div class="change"> 1.2%</div>
+                <div class="average">Average:<br>17,896</div>
+                <div class="current">Current:<br>18,064</div>
+                <div class="change">Change:<br>0.94%</div>
             </div>
         </md-card>
     </md-grid-tile>
@@ -66,9 +66,9 @@
                 </div>
             </div>
             <div class="numbers">
-                <div class="previous"> 10</div>
-                <div class="current"> 12</div>
-                <div class="change"> 1.2%</div>
+                <div class="average">Average:<br>£72,560.26</div>
+                <div class="current">Current:<br>£64,018.18</div>
+                <div class="change">Change:<br>-11.77%</div>
             </div>
         </md-card>
     </md-grid-tile>
@@ -77,8 +77,8 @@
 <router-outlet></router-outlet>
 
 
-<!--                <div class="previous"> {{ metric.previous }} </div>
+<!--                <div class="average"> {{ metric.average }} </div>
                 <div class="current"> {{ metric.current }} </div>
-                <div class="change"> {{ metric.current / metric.previous - 1 | percent:'1.1-1' }} </div>
+                <div class="change"> {{ metric.current / metric.average - 1 | percent:'1.1-1' }} </div>
             </div>
             -->

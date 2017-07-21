@@ -23,6 +23,10 @@ md-toolbar {
   width: 100%;
 }
 
+.main {
+  padding-left: 120px;
+}
+
 .home {
   cursor: pointer;
   padding: 0px;

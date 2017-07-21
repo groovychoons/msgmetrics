@@ -23,17 +23,24 @@ md-grid-list {
     background-color: #293342;
 }
 
-.previous {
+.numbers {
+    color: black;
+}
+
+.average {
+    display: inline-block;
     width: 30%;
     background-color: lightgreen;
 }
 
 .current {
+    display: inline-block;
     width: 30%;
     background-color: lightseagreen;
 }
 
 .change {
+    display: inline-block;
     width: 30%;
     background-color: lightpink;
 }
