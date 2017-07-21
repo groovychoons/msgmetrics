@@ -30,75 +30,61 @@ gapi.analytics.ready(function() {
         ids: ids
       }
     }
-    conversion.set(newIds).execute();
-    visitors.set(newIds).execute();
-    bouncerate.set(newIds).execute();
-    renderTopBrowsersChart(ids);
-    revenue.set(newIds).execute();
+    renderConversionRate(ids);
+    renderVisitors(ids);
+    renderBounceRate(ids);
+    renderRevenue(ids);
 
   });
 
-  var conversion = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
+
+  function renderConversionRate(ids) {
+    query({
+      'ids': ids,
       'dimensions': 'ga:date',
       'metrics': 'ga:transactionsPerSession',
       'start-date': '7daysAgo',
       'end-date': 'today',
-    },
-    chart: {
-      type: 'LINE',
-      container: 'Conversion Rate'
-    }
-  });
+    })
+    .then(function(response) {
 
-  var bouncerate = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
-      'dimensions': 'ga:date',
-      'metrics': 'ga:bounceRate',
-      'start-date': '7daysAgo',
-      'end-date': 'today'
-    },
-    chart: {
-      type: 'LINE',
-      container: 'Bounce Rate'
-    }
-  });
+      var data = [];
+      var labels = [];
 
-  var visitors = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
+      response.rows.forEach(function(row, i) {
+        data.push(+row[1]);
+        labels.push(row[0]);
+      });
+
+      localStorage.setItem("conversion_data",  JSON.stringify(data));
+      localStorage.setItem("conversion_labels",  JSON.stringify(labels));
+      
+    });
+  }
+  function renderVisitors(ids) {
+    query({
+      'ids': ids,
       'dimensions': 'ga:date',
       'metrics': 'ga:users',
-      'start-date': '30daysAgo',
+      'start-date': '7daysAgo',
       'end-date': 'today',
-    },
-    chart: {
-      type: 'LINE',
-      container: 'Visitors'
-    }
-  });
+    })
+    .then(function(response) {
 
-  var revenue = new gapi.analytics.googleCharts.DataChart({
-    reportType: 'ga',
-    query: {
-      'dimensions': 'ga:date',
-      'metrics': 'ga:transactionRevenue',
-      'start-date': '30daysAgo',
-      'end-date': 'today',
-    },
-    chart: {
-      type: 'LINE',
-      container: 'Revenue'
-    }
-  });
+      var data = [];
+      var labels = [];
 
-    /**
-   * Draw the a chart.js doughnut chart with data from the specified view that
-   * show the top 5 browsers over the past seven days.
-   */
-  function renderTopBrowsersChart(ids) {
+      response.rows.forEach(function(row, i) {
+        data.push(+row[1]);
+        labels.push(row[0]);
+      });
+
+      localStorage.setItem("visitor_data",  JSON.stringify(data));
+      localStorage.setItem("visitor_labels",  JSON.stringify(labels));
+      
+    });
+  }
+  function renderBounceRate(ids) {
 
     query({
       'ids': ids,
@@ -119,6 +105,31 @@ gapi.analytics.ready(function() {
 
       localStorage.setItem("bounce_data",  JSON.stringify(data));
       localStorage.setItem("bounce_labels",  JSON.stringify(labels));
+      
+    });
+  }
+
+  function renderRevenue(ids) {
+
+    query({
+      'ids': ids,
+      'dimensions': 'ga:date',
+      'metrics': 'ga:transactionRevenue',
+      'start-date': '30daysAgo',
+      'end-date': 'today',
+    })
+    .then(function(response) {
+
+      var data = [];
+      var labels = [];
+
+      response.rows.forEach(function(row, i) {
+        data.push(+row[1]);
+        labels.push(row[0]);
+      });
+
+      localStorage.setItem("revenue_data",  JSON.stringify(data));
+      localStorage.setItem("revenue_labels",  JSON.stringify(labels));
       
     });
   }

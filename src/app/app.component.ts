@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { IMyDrpOptions, IMyDateRangeModel, IMyDate } from 'mydaterangepicker';
 import { Inject, Injectable, Optional } from '@angular/core';
 
@@ -39,26 +39,26 @@ export class AppComponent {
     this.endString = this.end.year + "-" + this.end.month + "-" + this.end.day;
 
   }
-  
 
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  bounceData: string;
+  ArrayData: any[];
+  bounceLabels: string;
+  ArrayLabels: any[];
+  public barChartData:any[];
 
-  
+  ngAfterContentInit(){
+  this.bounceData = (localStorage.getItem("bounce_data")).slice(1,-1);
+  this.bounceLabels = (localStorage.getItem("bounce_labels")).slice(1,-1);
 
-  storedData: string = localStorage.getItem("bounce_data");
-  storedLabels: string = localStorage.getItem("bounce_labels");
+  this.ArrayLabels = this.bounceLabels.split(",");
+  this.ArrayData = this.bounceData.split(",");
 
-  storedData2: string = this.storedData.slice(1,-1);
-  storedLabels2: string = this.storedLabels.slice(1,-1);
-
-  public ArrayLabels: any[] = this.storedLabels2.split(",");
-  public ArrayData: any[] = this.storedData2.split(",");
-
-
-  public barChartLabels2:string[] = this.ArrayLabels;
-  public barChartData:any[] = [
+  this.barChartData = [
     {data: this.ArrayData, label: 'Bounce Rate'},
   ];
+  }
+
+
 
 }
 

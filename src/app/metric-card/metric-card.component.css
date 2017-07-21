@@ -19,10 +19,21 @@ md-grid-list {
     margin: 0px;
 }
 
-.numbers {
-    margin-top: 130px;
+.graph {
+    background-color: #293342;
 }
 
-#timeline {
-    background-color: red;
+.previous {
+    width: 30%;
+    background-color: lightgreen;
+}
+
+.current {
+    width: 30%;
+    background-color: lightseagreen;
+}
+
+.change {
+    width: 30%;
+    background-color: lightpink;
 }

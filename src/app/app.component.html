@@ -3,7 +3,7 @@
     <div class="logobox">
     </div>
   </md-sidenav>
-
+<div class="main">
   <md-toolbar>
     <div class="nav-left">
       <div class="home" routerLink="/">{{title}}</div>
@@ -23,6 +23,7 @@
 
 <app-metric-card></app-metric-card>
 
+</div>
 </md-sidenav-container>
 
 <div class="dates">
@@ -30,15 +31,5 @@
 <br>
 {{ endString }} 
 </div>
-
-<div>
-  <div style="display: block">
-    <canvas baseChart
-            [datasets]="barChartData"
-            [labels]='barChartLabels2'
-            chartType='line'></canvas>
-  </div>
-</div>
-
 
 <router-outlet></router-outlet>

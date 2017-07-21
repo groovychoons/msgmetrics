@@ -1,16 +1,84 @@
 
-<md-grid-list [cols]="2" rowHeight="300px" gutterSize="15px">
-    <md-grid-tile *ngFor= "let metric of data">
+<md-grid-list [cols]="2" rowHeight="400px" gutterSize="15px">
+    <md-grid-tile>
         <md-card>
-            <div class="title"> {{ metric.title }} </div>
-            <div class="graph" id={{metric.title}}></div>
+            <div class="title">Conversion Rate</div>
+            <div class="graph">
+                <div style="display: block">
+                <canvas baseChart
+                    [datasets]="conversionChartData"
+                    [labels]='ConversionLabels'
+                    chartType='line'></canvas>
+                </div>
+            </div>
             <div class="numbers">
-                <div class="previous"> {{ metric.previous }} </div>
-                <div class="current"> {{ metric.current }} </div>
-                <div class="change"> {{ metric.current / metric.previous - 1 | percent:'1.1-1' }} </div>
+                <div class="previous"> 10</div>
+                <div class="current"> 12</div>
+                <div class="change"> 1.2%</div>
+            </div>
+        </md-card>
+    </md-grid-tile>
+    <md-grid-tile>
+        <md-card>
+            <div class="title">Bounce Rate</div>
+            <div class="graph">
+                <div style="display: block">
+                <canvas baseChart
+                    [datasets]="bounceChartData"
+                    [labels]='BounceLabels'
+                    chartType='line'></canvas>
+                </div>
+            </div>
+            <div class="numbers">
+                <div class="previous"> 10</div>
+                <div class="current"> 12</div>
+                <div class="change"> 1.2%</div>
+            </div>
+        </md-card>
+    </md-grid-tile>
+    <md-grid-tile>
+        <md-card>
+            <div class="title">Visitors</div>
+            <div class="graph">
+                <div style="display: block">
+                <canvas baseChart
+                    [datasets]="visitorChartData"
+                    [labels]='VisitorLabels'
+                    chartType='line'></canvas>
+                </div>
+            </div>
+            <div class="numbers">
+                <div class="previous"> 10</div>
+                <div class="current"> 12</div>
+                <div class="change"> 1.2%</div>
+            </div>
+        </md-card>
+    </md-grid-tile>
+    <md-grid-tile>
+        <md-card>
+            <div class="title">Revenue</div>
+            <div class="graph">
+                <div style="display: block">
+                <canvas baseChart
+                    [datasets]="revenueChartData"
+                    [labels]='RevenueLabels'
+                    chartType='line'></canvas>
+                </div>
+            </div>
+            <div class="numbers">
+                <div class="previous"> 10</div>
+                <div class="current"> 12</div>
+                <div class="change"> 1.2%</div>
             </div>
         </md-card>
     </md-grid-tile>
 </md-grid-list>
 
 <router-outlet></router-outlet>
+
+
+<!--                <div class="previous"> {{ metric.previous }} </div>
+                <div class="current"> {{ metric.current }} </div>
+                <div class="change"> {{ metric.current / metric.previous - 1 | percent:'1.1-1' }} </div>
+            </div>
+            -->
