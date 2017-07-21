@@ -42,9 +42,22 @@ export class AppComponent {
   
 
   public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
- 
+
+  
+
+  storedData: string = localStorage.getItem("bounce_data");
+  storedLabels: string = localStorage.getItem("bounce_labels");
+
+  storedData2: string = this.storedData.slice(1,-1);
+  storedLabels2: string = this.storedLabels.slice(1,-1);
+
+  public ArrayLabels: any[] = this.storedLabels2.split(",");
+  public ArrayData: any[] = this.storedData2.split(",");
+
+
+  public barChartLabels2:string[] = this.ArrayLabels;
   public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: this.ArrayData, label: 'Bounce Rate'},
   ];
 
 }

@@ -32,12 +32,11 @@ gapi.analytics.ready(function() {
     }
     conversion.set(newIds).execute();
     visitors.set(newIds).execute();
-    renderBounceRateChart(ids);
+    bouncerate.set(newIds).execute();
+    renderTopBrowsersChart(ids);
     revenue.set(newIds).execute();
 
   });
-
-  // Step 5: Create the timeline chart.
 
   var conversion = new gapi.analytics.googleCharts.DataChart({
     reportType: 'ga',
@@ -53,26 +52,19 @@ gapi.analytics.ready(function() {
     }
   });
 
-  function renderBounceRateChart(ids) {
-    query({
-      'ids': ids,
+  var bouncerate = new gapi.analytics.googleCharts.DataChart({
+    reportType: 'ga',
+    query: {
       'dimensions': 'ga:date',
       'metrics': 'ga:bounceRate',
       'start-date': '7daysAgo',
       'end-date': 'today'
-    })
-    .then(function(response) {
-
-      var data = [];
-
-      response.rows.forEach(function(row) {
-        data.push(row[1]);
-      });
-
-      var thechart = document.getElementById('BounceTest');
-
-    });
-  }
+    },
+    chart: {
+      type: 'LINE',
+      container: 'Bounce Rate'
+    }
+  });
 
   var visitors = new gapi.analytics.googleCharts.DataChart({
     reportType: 'ga',
@@ -101,6 +93,36 @@ gapi.analytics.ready(function() {
       container: 'Revenue'
     }
   });
+
+    /**
+   * Draw the a chart.js doughnut chart with data from the specified view that
+   * show the top 5 browsers over the past seven days.
+   */
+  function renderTopBrowsersChart(ids) {
+
+    query({
+      'ids': ids,
+      'dimensions': 'ga:date',
+      'metrics': 'ga:bounceRate',
+      'start-date': '7daysAgo',
+      'end-date': 'today'
+    })
+    .then(function(response) {
+
+      var data = [];
+      var labels = [];
+
+      response.rows.forEach(function(row, i) {
+        data.push(+row[1]);
+        labels.push(row[0]);
+      });
+
+      localStorage.setItem("bounce_data",  JSON.stringify(data));
+      localStorage.setItem("bounce_labels",  JSON.stringify(labels));
+      
+    });
+  }
+
 
   function query(params) {
     return new Promise(function(resolve, reject) {
